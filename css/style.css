@@ -1,0 +1,220 @@
+/* Global Rules */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --purple-50: hsl(260, 100%, 95%);
+    --purple-300: hsl(264, 82%, 80%);
+    --purple-500: hsl(263, 55%, 52%);
+    --white: hsl(0, 0%, 100%);
+    --grey-100: hsl(214, 17%, 92%);
+    --grey-200: hsl(0, 0%, 81%);
+    --grey-400: hsl(224, 10%, 45%);
+    --grey-500: hsl(217, 19%, 35%);
+    --dark-blue: hsl(219, 29%, 14%);
+    --black: hsl(0, 0%, 7%);
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    line-height: 1;
+    font-size: 13px;
+    display: grid;
+    place-content: center;
+    background: linear-gradient(135deg, #e3e3e3, #f9f9f9, #eaeaea);
+    background-size: 300% 300%;
+    animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* End Global Rules */
+
+/* Text Section */
+
+.comment {
+    margin-bottom: 1rem;
+}
+
+.lg-text {
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+}
+
+.sm-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+
+/* End Text Section */
+
+/* Profile Section */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid hsl(0, 0%, 100%);
+    transition: all 0.3s ease;
+}
+
+.profile img:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.info .name {
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.info .name:hover {
+    cursor: pointer;
+}
+
+.info .status {
+    font-weight: 500;
+    font-size: .8rem;
+    opacity: 0.6;
+}
+
+/* End Profile Section */
+
+/* Grid Layout Section */
+
+.bento-grid {
+    display: grid;
+    gap: 2.5rem;
+    max-width: 1440px;
+    grid-auto-columns: 1fr;
+    margin: 1rem;
+    grid-template-areas:
+        'card1 card1 card2 card3'
+        'card1 card1 card2 card3'
+        'card4 card5 card5 card3';
+}
+
+.card {
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+.card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+
+/* End Grid Layout Section */
+
+/* Cards Section */
+
+.card1 {
+    background-color: var(--purple-500);
+    grid-area: card1;
+    color: var(--white);
+    background-image: url(../images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: top right 80px;
+}
+
+.card2 {
+    grid-area: card2;
+    background-color: var(--grey-500);
+    color: var(--white);
+}
+
+.card3 {
+    grid-area: card3;
+    background-color: var(--white);
+    color: var(--dark-blue);
+}
+
+.card4 {
+    grid-area: card4;
+    background-color: var(--white);
+    color: var(--dark-blue);
+}
+
+.card5 {
+    grid-area: card5;
+    background-color: var(--black);
+    color: var(--grey-100);
+}
+
+.card5 img {
+    border: 1px solid var(--purple-500)
+}
+
+.card5 img:hover {
+    box-shadow: 0 10px 40px rgba(76, 76, 76, 0.5);
+}
+
+/* End Cards Section */
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "card1 card2"
+            "card3 card4"
+            "card5 card5";
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "card1"
+            "card2"
+            "card3"
+            "card4"
+            "card5";
+    }
+
+    body {
+        padding: 1rem;
+    }
+}
